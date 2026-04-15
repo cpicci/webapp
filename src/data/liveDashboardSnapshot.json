@@ -1,0 +1,244 @@
+{
+  "meta": {
+    "sourceName": "MVP Test Back Office",
+    "spreadsheetId": "1szo_2Iuv4-r3fvvVQZvoHRvMzRFvvb4JrjgwHmH4MWg",
+    "syncedAt": "2026-04-09",
+    "pilotAgency": "CPI",
+    "pilotMetier": "Syndic",
+    "note": "Pilot mapping from current back-office workbook"
+  },
+  "cases": [
+    {
+      "pole": "Travaux",
+      "motif": "Travaux",
+      "statut": "Ouvert",
+      "priorite": "Haute",
+      "resume": "Constat de dégâts, facture toiture et PV AG à suivre",
+      "nomCopro": "",
+      "lot": "x",
+      "contactEmail": "testcentralparkimmo@gmail.com",
+      "createdAt": "11/03/2026",
+      "dossierId": "DOS-f18c8bae"
+    },
+    {
+      "pole": "Travaux",
+      "motif": "Travaux",
+      "statut": "Ouvert",
+      "priorite": "Normale",
+      "resume": "PV AG, constat de dégâts et facture travaux toiture à suivre",
+      "nomCopro": "Residence Mozart",
+      "lot": "32",
+      "contactEmail": "testcentralparkimmo@gmail.com",
+      "createdAt": "11/03/2026",
+      "dossierId": "DOS-0476f596"
+    },
+    {
+      "pole": "Travaux",
+      "motif": "Travaux",
+      "statut": "Ouvert",
+      "priorite": "Normale",
+      "resume": "Facture de travaux toiture à archiver et suivre pour Résidence Mozart",
+      "nomCopro": "Residence Mozart",
+      "lot": "x",
+      "contactEmail": "testcentralparkimmo@gmail.com",
+      "createdAt": "12/03/2026",
+      "dossierId": "DOS-4ffb1453"
+    },
+    {
+      "pole": "Sinistre",
+      "motif": "Degat des eaux",
+      "statut": "Ouvert",
+      "priorite": "Haute",
+      "resume": "Constat et pièces pour sinistre dégât des eaux toiture Lot 32",
+      "nomCopro": "Residence Mozart",
+      "lot": "32",
+      "contactEmail": "testcentralparkimmo@gmail.com",
+      "createdAt": "12/03/2026",
+      "dossierId": "DOS-33193796"
+    },
+    {
+      "pole": "Sinistre",
+      "motif": "Travaux",
+      "statut": "Ouvert",
+      "priorite": "Haute",
+      "resume": "PV AG, constat de dégâts et facture toiture Lot 32 pour suivi sinistre/travaux",
+      "nomCopro": "Residence Mozart",
+      "lot": "32",
+      "contactEmail": "testcentralparkimmo@gmail.com",
+      "createdAt": "27/03/2026",
+      "dossierId": "DOS-66f683c2"
+    },
+    {
+      "pole": "Sinistre",
+      "motif": "Degat des eaux",
+      "statut": "Ouvert",
+      "priorite": "Haute",
+      "resume": "Constat de dégâts reçu pour ouverture de sinistre",
+      "nomCopro": "",
+      "lot": "x",
+      "contactEmail": "mehdi.benmila@gmail.com",
+      "createdAt": "08/04/2026",
+      "dossierId": "DOS-2b25eac6"
+    },
+    {
+      "pole": "Travaux",
+      "motif": "Travaux",
+      "statut": "Ouvert",
+      "priorite": "Normale",
+      "resume": "Relance travaux pour le lot 32 Résidence Mozart",
+      "nomCopro": "Residence Mozart",
+      "lot": "LOT",
+      "contactEmail": "",
+      "createdAt": "08/04/2026",
+      "dossierId": "DOS-ff18d8b9"
+    },
+    {
+      "pole": "Compta",
+      "motif": "Facture",
+      "statut": "Ouvert",
+      "priorite": "Normale",
+      "resume": "Traitement d’une facture à enregistrer en comptabilité",
+      "nomCopro": "",
+      "lot": "x",
+      "contactEmail": "",
+      "createdAt": "08/04/2026",
+      "dossierId": "DOS-618235f4"
+    },
+    {
+      "pole": "Travaux",
+      "motif": "Travaux",
+      "statut": "Ouvert",
+      "priorite": "Normale",
+      "resume": "Facture de travaux de toiture à classer et suivre",
+      "nomCopro": "",
+      "lot": "x",
+      "contactEmail": "",
+      "createdAt": "08/04/2026",
+      "dossierId": "DOS-c14a7f90"
+    }
+  ],
+  "relance": [
+    {
+      "pole": "Travaux",
+      "motif": "Travaux",
+      "nomCopro": "Residence Mozart",
+      "lot": "Lot 32",
+      "contactEmail": "testcentralparkimmo@gmail.com",
+      "dateRelance": "18/03/2026",
+      "statut": "Brouillon cree",
+      "rappel": "Vérifier le traitement du constat et de la facture de travaux toiture Lot 32",
+      "createdAt": "11/03/2026",
+      "resendIn": "7 jours",
+      "relanceId": "subject:empty|testcentralparkimmo@gmail.com|2026-03-18"
+    },
+    {
+      "pole": "Sinistre",
+      "motif": "Degat des eaux",
+      "nomCopro": "Residence Mozart",
+      "lot": "Lot 32",
+      "contactEmail": "testcentralparkimmo@gmail.com",
+      "dateRelance": "15/03/2026",
+      "statut": "Brouillon cree",
+      "rappel": "Vérifier traitement du sinistre dégât des eaux toiture Lot 32 et archivage des pièces jointes",
+      "createdAt": "12/03/2026",
+      "resendIn": "3 jours",
+      "relanceId": "subject:empty|testcentralparkimmo@gmail.com|2026-03-15"
+    },
+    {
+      "pole": "Sinistre",
+      "motif": "Travaux",
+      "nomCopro": "Residence Mozart",
+      "lot": "Lot 32",
+      "contactEmail": "testcentralparkimmo@gmail.com",
+      "dateRelance": "27/03/2026",
+      "statut": "Brouillon cree",
+      "rappel": "Vérifier le traitement du sinistre et le suivi des travaux de toiture Lot 32 (PV, constat, facture).",
+      "createdAt": "27/03/2026",
+      "resendIn": "3 jours",
+      "relanceId": "subject:empty|testcentralparkimmo@gmail.com|2026-03-30"
+    },
+    {
+      "pole": "Sinistre",
+      "motif": "Degat des eaux",
+      "nomCopro": "",
+      "lot": "x",
+      "contactEmail": "mehdi.benmila@gmail.com",
+      "dateRelance": "11/04/2026",
+      "statut": "En attente",
+      "rappel": "Vérifier le constat reçu et lancer les démarches de déclaration de sinistre",
+      "createdAt": "08/04/2026",
+      "resendIn": "3 jours",
+      "relanceId": "subject:empty|mehdi.benmila@gmail.com|2026-04-11"
+    },
+    {
+      "pole": "Compta",
+      "motif": "Facture",
+      "nomCopro": "",
+      "lot": "x",
+      "contactEmail": "",
+      "dateRelance": "15/04/2026",
+      "statut": "En attente",
+      "rappel": "Relancer le traitement et le paiement de la facture de travaux toiture",
+      "createdAt": "08/04/2026",
+      "resendIn": "7 jours",
+      "relanceId": "subject:empty|no-email|2026-04-15"
+    }
+  ],
+  "compta": [
+    {
+      "date": "2026-02-24",
+      "personneId": "P-e147bfc9",
+      "nom": "Benmila",
+      "prenom": "Mehdi",
+      "categorie": "autre",
+      "debit": "442",
+      "credit": "",
+      "description": "test de comptabilité",
+      "resteACharge": ""
+    },
+    {
+      "date": "2026-02-24",
+      "personneId": "P-828b5f36",
+      "nom": "Mathilde",
+      "prenom": "",
+      "categorie": "reddition_des_comptes",
+      "debit": "502,58",
+      "credit": "",
+      "description": "Reddition des comptes 265 VOLTAIRE ref 0008 45000001 - MATHILDE",
+      "resteACharge": "502,58"
+    },
+    {
+      "date": "2026-02-24",
+      "personneId": "P-5429526f",
+      "nom": "Neiva Norma Immobilier",
+      "prenom": "",
+      "categorie": "reddition_des_comptes",
+      "debit": "",
+      "credit": "12,54",
+      "description": "Reddition des comptes 265 VOLTAIRE ref 0008 45000002 - NEIVA NORMA IMMOBILIER",
+      "resteACharge": ""
+    },
+    {
+      "date": "2026-02-24",
+      "personneId": "P-711bf2e2",
+      "nom": "M Salgi Et Giorgi",
+      "prenom": "",
+      "categorie": "reddition_des_comptes",
+      "debit": "523,28",
+      "credit": "",
+      "description": "Reddition des comptes 265 VOLTAIRE ref 0008 45000003 - M SALGI ET GIORGI",
+      "resteACharge": "523,28"
+    },
+    {
+      "date": "2026-02-24",
+      "personneId": "P-a61a1efe",
+      "nom": "Artero",
+      "prenom": "Gwenaelle",
+      "categorie": "reddition_des_comptes",
+      "debit": "",
+      "credit": "209,05",
+      "description": "Reddition des comptes 265 VOLTAIRE ref 0008 45000004 - ARTERO GWENAELLE",
+      "resteACharge": ""
+    }
+  ]
+}

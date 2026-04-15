@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Central Parc Immo — Espace opérateur</title>
+  <link rel="stylesheet" href="workspace-v2.css">
+</head>
+<body>
+  <div class="app">
+
+    <!-- SHELL -->
+    <header class="shell">
+      <div class="brand">
+        <span class="brand-eyebrow">Espace opérateur</span>
+        <h1 class="brand-title"><span>C</span>entral Parc Immo</h1>
+      </div>
+      <div class="operator">
+        <span class="operator-name">Bonjour, Fabrice</span>
+        <span class="operator-role">Responsable Syndic</span>
+        <span class="operator-context">CPI</span>
+      </div>
+    </header>
+
+    <!-- FILTRES -->
+    <section class="filters" aria-label="Filtres">
+      <div class="filter-group">
+        <label for="filter-pole">Pôle</label>
+        <select id="filter-pole">
+          <option>Tous</option>
+          <option>Travaux</option>
+          <option>Sinistre</option>
+          <option>Compta</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-statut">Statut</label>
+        <select id="filter-statut">
+          <option>Tous</option>
+          <option>À traiter</option>
+          <option>En attente</option>
+          <option>Brouillon</option>
+        </select>
+      </div>
+      <div class="filter-meta">
+        <span>Source — GSheet Opérationnel</span>
+        <span>Mis à jour le 14/04/2026</span>
+      </div>
+    </section>
+
+    <!-- WORKSPACE -->
+    <main class="workspace">
+
+      <!-- FILE DE TRAVAIL -->
+      <section class="queue-region" aria-label="File de travail">
+        <h2 class="region-title">File de travail</h2>
+
+        <!-- URGENCES -->
+        <div class="queue-group">
+          <h3 class="group-header">
+            <span class="group-badge urgent">3</span>
+            <span class="group-title">Urgences du jour</span>
+          </h3>
+          <ul class="queue-list">
+            <li class="queue-item selected" tabindex="0">
+              <div class="item-main">
+                <span class="item-kicker">Sinistre</span>
+                <strong class="item-title">Dégât des eaux appartement 12</strong>
+                <span class="item-context">Résidence Les Lilas · Lot 12</span>
+              </div>
+              <div class="item-meta">
+                <span class="meta-line">
+                  <span class="meta-label">Échéance</span>
+                  <strong>Aujourd'hui</strong>
+                </span>
+                <span class="state-badge urgent">Action requise</span>
+              </div>
+            </li>
+            <li class="queue-item" tabindex="0">
+              <div class="item-main">
+                <span class="item-kicker">Relance</span>
+                <strong class="item-title">Retard paiement charges T2</strong>
+                <span class="item-context">Copropriété du Port · Rappel 3e échéance</span>
+              </div>
+              <div class="item-meta">
+                <span class="meta-line">
+                  <span class="meta-label">Échéance</span>
+                  <strong>13/04/2026</strong>
+                </span>
+                <span class="state-badge overdue">En retard</span>
+              </div>
+            </li>
+            <li class="queue-item" tabindex="0">
+              <div class="item-main">
+                <span class="item-kicker">Travaux</span>
+                <strong class="item-title">Validation devis toiture — urgent</strong>
+                <span class="item-context">Résidence Le Parc · Lot 5</span>
+              </div>
+              <div class="item-meta">
+                <span class="meta-line">
+                  <span class="meta-label">Créé</span>
+                  <strong>14/04/2026</strong>
+                </span>
+                <span class="state-badge urgent">Action requise</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- DOSSIERS SUIVIS -->
+        <div class="queue-group">
+          <h3 class="group-header">
+            <span class="group-badge">8</span>
+            <span class="group-title">Dossiers suivis</span>
+          </h3>
+          <ul class="queue-list">
+            <li class="queue-item" tabindex="0">
+              <div class="item-main">
+                <span class="item-kicker">Travaux</span>
+                <strong class="item-title">Remplacement chaudière collective</strong>
+                <span class="item-context">Résidence Les Jardins</span>
+              </div>
+              <div class="item-meta">
+                <span class="meta-line">
+                  <span class="meta-label">Créé</span>
+                  <strong>10/04/2026</strong>
+                </span>
+                <span class="state-badge routine">Routine</span>
+              </div>
+            </li>
+            <li class="queue-item" tabindex="0">
+              <div class="item-main">
+                <span class="item-kicker">Compta</span>
+                <strong class="item-title">Relance fournisseur électricité</strong>
+                <span class="item-context">Immeuble Le Phare · Facture impayée</span>
+              </div>
+              <div class="item-meta">
+                <span class="meta-line">
+                  <span class="meta-label">Créé</span>
+                  <strong>08/04/2026</strong>
+                </span>
+                <span class="state-badge recent">Récent</span>
+              </div>
+            </li>
+            <li class="queue-item" tabindex="0">
+              <div class="item-main">
+                <span class="item-kicker">Sinistre</span>
+                <strong class="item-title">Expertise infiltration cave</strong>
+                <span class="item-context">265 Voltaire · Lot 3</span>
+              </div>
+              <div class="item-meta">
+                <span class="meta-line">
+                  <span class="meta-label">Créé</span>
+                  <strong>07/04/2026</strong>
+                </span>
+                <span class="state-badge routine">Routine</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- RELANCES À TRAITER -->
+        <div class="queue-group">
+          <h3 class="group-header">
+            <span class="group-badge">4</span>
+            <span class="group-title">Relances à traiter</span>
+          </h3>
+          <ul class="queue-list">
+            <li class="queue-item" tabindex="0">
+              <div class="item-main">
+                <span class="item-kicker">Relance</span>
+                <strong class="item-title">Appel de fonds trimestriel T1</strong>
+                <span class="item-context">Résidence du Parc</span>
+              </div>
+              <div class="item-meta">
+                <span class="meta-line">
+                  <span class="meta-label">Échéance</span>
+                  <strong>15/04/2026</strong>
+                </span>
+                <span class="state-badge urgent">À traiter</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- RELANCES PRÉPARÉES -->
+        <div class="queue-group">
+          <h3 class="group-header">
+            <span class="group-badge drafted">5</span>
+            <span class="group-title">Relances préparées</span>
+          </h3>
+          <ul class="queue-list">
+            <li class="queue-item" tabindex="0">
+              <div class="item-main">
+                <span class="item-kicker">Relance</span>
+                <strong class="item-title">Charges copropriété mars 2026</strong>
+                <span class="item-context">Copropriété Les Cèdres</span>
+              </div>
+              <div class="item-meta">
+                <span class="meta-line">
+                  <span class="meta-label">Préparé</span>
+                  <strong>12/04/2026</strong>
+                </span>
+                <span class="state-badge drafted">Brouillon</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </section>
+
+      <!-- DÉTAIL PERSISTANT -->
+      <aside class="detail-region" aria-label="Détail de l'élément sélectionné">
+        <header class="detail-header">
+          <span class="detail-kicker">Dossier · Sinistre</span>
+          <h2 class="detail-title">Dégât des eaux appartement 12</h2>
+        </header>
+
+        <div class="detail-content">
+          <div class="detail-card">
+            <div class="detail-kind">
+              <span class="kind-badge">Dossier</span>
+              <span class="state-badge urgent">Action requise</span>
+            </div>
+            <p class="detail-description">
+              Signalement d'un dégât des eaux dans l'appartement 12.
+              Plombier intervenu le 13/04. Devis de réparation à valider avant vendredi.
+            </p>
+          </div>
+
+          <div class="detail-meta-grid">
+            <div class="meta-item">
+              <span class="meta-label">Dossier</span>
+              <strong>SIN-2026-04-128</strong>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Copropriété</span>
+              <strong>Résidence Les Lilas</strong>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Lot</span>
+              <strong>Lot 12</strong>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Pôle</span>
+              <strong>Sinistre</strong>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Créé le</span>
+              <strong>13/04/2026</strong>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Contact</span>
+              <strong>M. Dubois</strong>
+            </div>
+          </div>
+
+          <div class="detail-actions">
+            <button class="btn-primary">Ouvrir le dossier</button>
+            <button class="btn-secondary">Voir la copro</button>
+          </div>
+        </div>
+
+        <footer class="detail-footer">
+          <h4>Activité récente</h4>
+          <ul class="activity-list">
+            <li>
+              <strong>Rappel chaudière — Les Jardins</strong>
+              <span>14/04/2026</span>
+            </li>
+            <li>
+              <strong>Appel de fonds T1 — Le Parc</strong>
+              <span>12/04/2026</span>
+            </li>
+            <li>
+              <strong>Relance loyer — M. Lambert</strong>
+              <span>11/04/2026</span>
+            </li>
+          </ul>
+        </footer>
+      </aside>
+
+    </main>
+  </div>
+</body>
+</html>
