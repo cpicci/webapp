@@ -1,0 +1,22 @@
+name: Sync Google Sheets → Supabase
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'   # toutes les 30 minutes
+  workflow_dispatch:          # déclenchement manuel possible
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Sync sheets to Supabase
+        env:
+          SUPABASE_URL: https://jdiewxrcxtwjtpofdrvl.supabase.co
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: node scripts/sync-sheets-to-supabase.mjs
