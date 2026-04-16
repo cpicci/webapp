@@ -1,32 +1,51 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 import { loadLiveDashboardSnapshot } from './loadLiveDashboardSnapshot';
-import { liveDashboardSnapshot, liveDashboardSnapshotUrl } from './liveDashboardSnapshot';
+import { liveDashboardSnapshot } from './liveDashboardSnapshot';
+
+vi.mock('../lib/supabase', () => ({
+  supabase: {
+    from: vi.fn(),
+  },
+}));
+
+import { supabase } from '../lib/supabase';
 
 describe('loadLiveDashboardSnapshot', () => {
-  afterEach(() => {
-    vi.restoreAllMocks();
-  });
-
-  it('loads the runtime snapshot JSON from the asset url', async () => {
-    const fetchMock = vi.spyOn(globalThis, 'fetch').mockResolvedValue({
-      ok: true,
-      json: async () => liveDashboardSnapshot,
-    } as Response);
+  it('loads the snapshot from Supabase', async () => {
+    vi.mocked(supabase.from).mockReturnValue({
+      select: vi.fn().mockReturnValue({
+        order: vi.fn().mockReturnValue({
+          limit: vi.fn().mockReturnValue({
+            maybeSingle: vi.fn().mockResolvedValue({
+              data: { snapshot: liveDashboardSnapshot },
+              error: null,
+            }),
+          }),
+        }),
+      }),
+    } as any);
 
     const snapshot = await loadLiveDashboardSnapshot();
 
-    expect(fetchMock).toHaveBeenCalledWith(liveDashboardSnapshotUrl, { cache: 'no-store' });
     expect(snapshot.meta.sourceName).toBe('MVP Test Back Office');
     expect(snapshot.cases).toHaveLength(9);
   });
 
-  it('rejects invalid runtime payloads instead of accepting silent drift', async () => {
-    vi.spyOn(globalThis, 'fetch').mockResolvedValue({
-      ok: true,
-      json: async () => ({ meta: {}, cases: [] }),
-    } as Response);
+  it('throws when no snapshot data is available', async () => {
+    vi.mocked(supabase.from).mockReturnValue({
+      select: vi.fn().mockReturnValue({
+        order: vi.fn().mockReturnValue({
+          limit: vi.fn().mockReturnValue({
+            maybeSingle: vi.fn().mockResolvedValue({
+              data: null,
+              error: null,
+            }),
+          }),
+        }),
+      }),
+    } as any);
 
-    await expect(loadLiveDashboardSnapshot()).rejects.toThrow(/invalid live dashboard snapshot/i);
+    await expect(loadLiveDashboardSnapshot()).rejects.toThrow(/aucune donnée disponible/i);
   });
 });

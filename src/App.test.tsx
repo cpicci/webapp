@@ -1,10 +1,18 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { afterEach, beforeEach, vi } from 'vitest';
+import { afterEach, vi } from 'vitest';
 import type { User } from '@supabase/supabase-js';
 
 import App from './App';
 import { liveDashboardSnapshot } from './data/liveDashboardSnapshot';
+
+vi.mock('./lib/supabase', () => ({
+  supabase: {
+    from: vi.fn(),
+  },
+}));
+
+import { supabase } from './lib/supabase';
 
 const mockUser: User = {
   id: 'test-user-id',
@@ -15,19 +23,28 @@ const mockUser: User = {
   created_at: '2024-01-01T00:00:00Z',
 } as User;
 
-describe('App', () => {
-  beforeEach(() => {
-    vi.spyOn(globalThis, 'fetch').mockResolvedValue({
-      ok: true,
-      json: async () => liveDashboardSnapshot,
-    } as Response);
-  });
+function mockSupabaseSnapshot() {
+  vi.mocked(supabase.from).mockReturnValue({
+    select: vi.fn().mockReturnValue({
+      order: vi.fn().mockReturnValue({
+        limit: vi.fn().mockReturnValue({
+          maybeSingle: vi.fn().mockResolvedValue({
+            data: { snapshot: liveDashboardSnapshot },
+            error: null,
+          }),
+        }),
+      }),
+    }),
+  } as any);
+}
 
+describe('App', () => {
   afterEach(() => {
     vi.restoreAllMocks();
   });
 
   it('renders the operator workspace shell with brand identity', async () => {
+    mockSupabaseSnapshot();
     render(<App user={mockUser} />);
 
     // Loading state appears first
@@ -45,6 +62,7 @@ describe('App', () => {
   });
 
   it('renders the work queue and persistent detail after data loads', async () => {
+    mockSupabaseSnapshot();
     render(<App user={mockUser} />);
 
     // Wait for data to load — queue region appears
@@ -65,6 +83,7 @@ describe('App', () => {
   });
 
   it('shows source freshness info after data loads', async () => {
+    mockSupabaseSnapshot();
     render(<App user={mockUser} />);
 
     await screen.findByText(/file de travail/i);
@@ -74,6 +93,7 @@ describe('App', () => {
   });
 
   it('filters the queue when pole select changes', async () => {
+    mockSupabaseSnapshot();
     const user = userEvent.setup();
 
     render(<App user={mockUser} />);
@@ -89,6 +109,7 @@ describe('App', () => {
   });
 
   it('does not render old dashboard-era elements', async () => {
+    mockSupabaseSnapshot();
     render(<App user={mockUser} />);
 
     await screen.findByText(/file de travail/i);
