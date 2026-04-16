@@ -1,33 +1,23 @@
-import { liveDashboardSnapshotUrl } from './liveDashboardSnapshot';
+import { supabase } from '../lib/supabase';
+import type { liveDashboardSnapshot } from './liveDashboardSnapshot';
 
-function isValidSnapshot(payload: unknown) {
-  if (!payload || typeof payload !== 'object') {
-    return false;
+type DashboardSnapshot = typeof liveDashboardSnapshot;
+
+export async function loadLiveDashboardSnapshot(): Promise<DashboardSnapshot> {
+  const { data, error } = await supabase
+    .from('dashboard_snapshots')
+    .select('snapshot')
+    .order('synced_at', { ascending: false })
+    .limit(1)
+    .single();
+
+  if (error) {
+    throw new Error(`Failed to load dashboard snapshot: ${error.message}`);
   }
 
-  const candidate = payload as Record<string, unknown>;
-
-  return Boolean(
-    candidate.meta &&
-      typeof candidate.meta === 'object' &&
-      Array.isArray(candidate.cases) &&
-      Array.isArray(candidate.relance) &&
-      Array.isArray(candidate.compta),
-  );
-}
-
-export async function loadLiveDashboardSnapshot() {
-  const response = await fetch(liveDashboardSnapshotUrl, { cache: 'no-store' });
-
-  if (!response.ok) {
-    throw new Error(`Failed to load live dashboard snapshot: ${response.status}`);
+  if (!data?.snapshot) {
+    throw new Error('Empty dashboard snapshot');
   }
 
-  const payload = await response.json();
-
-  if (!isValidSnapshot(payload)) {
-    throw new Error('Invalid live dashboard snapshot payload');
-  }
-
-  return payload;
+  return data.snapshot as DashboardSnapshot;
 }
