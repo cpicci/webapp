@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import type { User } from '@supabase/supabase-js';
 
 import { UserContext, getDisplayName } from './context/UserContext';
@@ -6,7 +5,6 @@ import FilterBar from './components/FilterBar';
 import OperatorShell from './components/OperatorShell';
 import PersistentDetail from './components/PersistentDetail';
 import WorkQueue from './components/WorkQueue';
-import { supabase } from './lib/supabase';
 import { buildDashboardViewModel } from './data/dashboardAdapter';
 import { useDashboardFilters } from './hooks/useDashboardFilters';
 import { useLiveDashboardData } from './hooks/useLiveDashboardData';
