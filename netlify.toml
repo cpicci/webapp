@@ -1,0 +1,7 @@
+[build]
+  command   = "npm run build"
+  publish   = "dist"
+
+[build.environment]
+  # VITE_SUPABASE_URL is a public project URL, not a secret — safe to appear in repo files
+  SECRETS_SCAN_OMIT_KEYS = "VITE_SUPABASE_URL"
