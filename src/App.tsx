@@ -2,6 +2,7 @@ import type { User } from '@supabase/supabase-js';
 
 import { UserContext, getDisplayName } from './context/UserContext';
 import FilterBar from './components/FilterBar';
+import KpiOverview from './components/KpiOverview';
 import OperatorShell from './components/OperatorShell';
 import PersistentDetail from './components/PersistentDetail';
 import WorkQueue from './components/WorkQueue';
@@ -118,6 +119,7 @@ export default function App({ user }: Props) {
           onPoleChange={setPole}
           onStatusChange={setStatus}
         />
+        <KpiOverview cards={viewModel.kpiCards} />
         <main className="workspace">
           <WorkQueue
             urgences={urgences}
