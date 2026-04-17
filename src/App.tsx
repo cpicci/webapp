@@ -119,7 +119,7 @@ export default function App({ user }: Props) {
           onPoleChange={setPole}
           onStatusChange={setStatus}
         />
-        <KpiOverview cards={viewModel.kpiCards} />
+        {viewModel && <KpiOverview cards={viewModel.kpiCards} />}
         <main className="workspace">
           <WorkQueue
             urgences={urgences}

@@ -1,5 +1,0 @@
-[[redirects]]
-  from = "/api/live-dashboard"
-  to = "https://n8n.srv1528720.hstgr.cloud/webhook/live-dashboard"
-  status = 200
-  force = true
