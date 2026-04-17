@@ -29,7 +29,10 @@ function mockSupabaseSnapshot() {
       order: vi.fn().mockReturnValue({
         limit: vi.fn().mockReturnValue({
           maybeSingle: vi.fn().mockResolvedValue({
-            data: { snapshot: liveDashboardSnapshot },
+            data: {
+              snapshot: liveDashboardSnapshot,
+              synced_at: '2026-04-17T10:30:00.000Z',
+            },
             error: null,
           }),
         }),
@@ -89,7 +92,7 @@ describe('App', () => {
     await screen.findByText(/file de travail/i);
 
     expect(screen.getByText(/source — gsheet opérationnel/i)).toBeInTheDocument();
-    expect(screen.getByText(/mis à jour le/i)).toBeInTheDocument();
+    expect(screen.getByText(/actualisé/i)).toBeInTheDocument();
   });
 
   it('filters the queue when pole select changes', async () => {

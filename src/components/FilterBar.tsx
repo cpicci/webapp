@@ -24,9 +24,18 @@ const STATUS_OPTIONS: { value: WorkflowStatusFilter; label: string }[] = [
 
 function formatSyncDate(iso?: string): string {
   if (!iso) return '—';
-  const [year, month, day] = iso.split('-');
-  if (!year || !month || !day) return iso;
-  return `${day}/${month}/${year}`;
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return iso;
+  const today = new Date();
+  const isToday =
+    d.getDate() === today.getDate() &&
+    d.getMonth() === today.getMonth() &&
+    d.getFullYear() === today.getFullYear();
+  const time = d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+  if (isToday) return `aujourd'hui à ${time}`;
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  return `${day}/${month} à ${time}`;
 }
 
 export default function FilterBar({ pole, status, syncedAt, onPoleChange, onStatusChange }: FilterBarProps) {
@@ -60,7 +69,7 @@ export default function FilterBar({ pole, status, syncedAt, onPoleChange, onStat
 
       <div className="filter-meta">
         <span>Source — GSheet Opérationnel</span>
-        {syncedAt && <span>Mis à jour le {formatSyncDate(syncedAt)}</span>}
+        {syncedAt && <span>Actualisé {formatSyncDate(syncedAt)}</span>}
       </div>
     </section>
   );

@@ -27,7 +27,7 @@ type Props = {
 
 export default function App({ user }: Props) {
   const { pole, status, setPole, setStatus } = useDashboardFilters();
-  const { snapshot, loading, error } = useLiveDashboardData();
+  const { snapshot, syncedAt, loading, error } = useLiveDashboardData();
 
   const viewModel = snapshot
     ? buildDashboardViewModel(snapshot, { pole, status })
@@ -115,7 +115,7 @@ export default function App({ user }: Props) {
         <FilterBar
           pole={pole}
           status={status}
-          syncedAt={snapshot.meta.syncedAt}
+          syncedAt={syncedAt ?? undefined}
           onPoleChange={setPole}
           onStatusChange={setStatus}
         />

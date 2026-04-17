@@ -3,10 +3,15 @@ import type { liveDashboardSnapshot } from './liveDashboardSnapshot';
 
 type DashboardSnapshot = typeof liveDashboardSnapshot;
 
-export async function loadLiveDashboardSnapshot(): Promise<DashboardSnapshot> {
+export type SnapshotResult = {
+  snapshot: DashboardSnapshot;
+  syncedAt: string;
+};
+
+export async function loadLiveDashboardSnapshot(): Promise<SnapshotResult> {
   const { data, error } = await supabase
     .from('dashboard_snapshots')
-    .select('snapshot')
+    .select('snapshot, synced_at')
     .order('synced_at', { ascending: false })
     .limit(1)
     .maybeSingle();
@@ -16,8 +21,8 @@ export async function loadLiveDashboardSnapshot(): Promise<DashboardSnapshot> {
   }
 
   if (!data?.snapshot) {
-    throw new Error('Aucune donnée disponible — la synchronisation n\'a pas encore tourné.');
+    throw new Error("Aucune donnée disponible — la synchronisation n'a pas encore tourné.");
   }
 
-  return data.snapshot as DashboardSnapshot;
+  return { snapshot: data.snapshot as DashboardSnapshot, syncedAt: data.synced_at as string };
 }
