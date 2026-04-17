@@ -127,7 +127,7 @@ export default function App({ user }: Props) {
             selectedId={selectedId}
             onSelect={setSelectedId}
           />
-          <PersistentDetail item={selectedItem} />
+          <PersistentDetail item={selectedItem} spreadsheetId={snapshot.meta.spreadsheetId} />
         </main>
       </div>
     </UserContext.Provider>

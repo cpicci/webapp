@@ -37,9 +37,10 @@ function formatDate(iso: string): string {
 
 type Props = {
   item: FollowUpItem | null;
+  spreadsheetId?: string;
 };
 
-export default function PersistentDetail({ item }: Props) {
+export default function PersistentDetail({ item, spreadsheetId }: Props) {
   if (!item) {
     return (
       <aside className="detail-region" aria-label="Détail">
@@ -94,12 +95,16 @@ export default function PersistentDetail({ item }: Props) {
         </div>
 
         <div className="detail-actions">
-          <button className="btn-primary" type="button">
-            Ouvrir le dossier
-          </button>
-          <button className="btn-secondary" type="button">
-            Voir la copro
-          </button>
+          {spreadsheetId && (
+            <a
+              className="btn-primary"
+              href={`https://docs.google.com/spreadsheets/d/${spreadsheetId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ouvrir le classeur source
+            </a>
+          )}
         </div>
       </div>
 
